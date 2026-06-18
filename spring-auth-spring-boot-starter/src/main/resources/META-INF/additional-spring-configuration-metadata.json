@@ -1,0 +1,17 @@
+{
+  "groups": [
+    {
+      "name": "spring-auth",
+      "type": "com.cocreiamo.auth.SpringAuthProperties",
+      "description": "spring-auth starter: Laravel-style authentication DX on top of Spring Security. Form login, session, CSRF, password reset, email verification, sudo window, login throttling. Ships defaults, you adapt."
+    }
+  ],
+  "properties": [
+    {
+      "name": "spring-auth.enabled",
+      "type": "java.lang.Boolean",
+      "description": "Master switch. When false, the starter registers no SecurityFilterChain, flow, or REST endpoint, leaving the application on raw Spring Security defaults.",
+      "defaultValue": true
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+jdk:
+  - openjdk21
+
+install:
+  - chmod +x mvnw
+  - ./mvnw -B -ntp -DskipTests install
+
+before_install:
+  - sdk install java 21.0.4-tem
+  - sdk use java 21.0.4-tem
