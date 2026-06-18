@@ -1,6 +1,6 @@
 # ADR-0002: Scaffold generator delivery mechanism
 
-- **Status:** proposed
+- **Status:** accepted
 - **Date:** 2026-06-18
 - **Deciders:** Francesco Bilotta
 
@@ -19,8 +19,11 @@ starts. This ADR records the options; the decision is Francesco's.
 
 ## Decision
 
-OPEN. To be decided before Epic C, story C1. The candidates below are stated with their
-trade-offs; none is chosen yet.
+**(a) Maven build-plugin goal** (e.g. `mvn spring-auth:scaffold`). Lowest friction, no new
+distribution channel to ship or sign, family-coherent (spring-gdpr ships a maven-plugin
+module), and the adopter already has Maven. Epic C story C1 implements this one mechanism.
+The standalone CLI (b) stays named as a later thin wrapper once there is adopter demand;
+the initializr web generator (c) stays deferred.
 
 ## Options
 

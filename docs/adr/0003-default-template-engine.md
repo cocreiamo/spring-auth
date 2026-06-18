@@ -1,6 +1,6 @@
 # ADR-0003: Default template engine for the MVC scaffold
 
-- **Status:** proposed
+- **Status:** accepted
 - **Date:** 2026-06-18
 - **Deciders:** Francesco Bilotta
 
@@ -17,8 +17,23 @@ Two candidates are on the table (DESIGN doc section 3.5 decision 3).
 
 ## Decision
 
-OPEN. To be decided before Epic C, story C2. Options and trade-offs below; the decision is
-Francesco's.
+**The engine is agnostic at the scaffold layer; the DEFAULT for now is `--ui=lievit` (lievit
+over JTE).** Three points:
+
+1. **The backend is 100% template-agnostic.** The auto-config starter (Epics A + B) ships no
+   views at all, exactly like Fortify. The template choice touches ONLY the scaffold output,
+   so an adopter who wants just the configured Spring Security backend pulls zero view deps.
+2. **The scaffold goal (`-Dui=` / `--ui`) ships one template SET per engine**, the adopter
+   picks: `lievit` (reactive, lievit components rendered on JTE, the Livewire-feel tier),
+   `jte` (plain JTE forms, dependency-free, the Blade-POST analog), `thymeleaf` (widest Spring
+   reach). Agnosticism is achieved by shipping multiple sets, not by forcing one into the core.
+3. **Default = `lievit` (+ JTE substrate)** to give the Livewire-equivalent DX out of the box
+   and to keep the cocreiamo stack on one engine (lievit + housetree `gest` render in JTE).
+   Thymeleaf stays the broad-reach alternative set; `jte` plain is the zero-dependency set.
+   The `lievit` set carries zero compile dependency from the starter (DESIGN section 3.2(b)).
+
+This supersedes the earlier Thymeleaf-vs-JTE framing: the answer is "both, plus lievit, behind
+`--ui`", with lievit+JTE as the shipped default.
 
 ## Options
 
